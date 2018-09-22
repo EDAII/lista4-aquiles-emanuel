@@ -169,7 +169,10 @@ void busca(int n2, node* raiz){
       int bool2=0;
       printf("passo 3 \n");
       bool2=converte(raiz);
-      printf("passo 4 \n");
+      if(bool2==1){
+          printf("  o no esta nulo \n");
+      }
+      printf("passo 4 %d \n",raiz->number );
       n1=raiz->number;
       printf("passo 5 \n");         
       while(bool2==0){
@@ -220,7 +223,7 @@ int tamanhohierarquia(node* pai, int  n){
     abreesquerda(arvore1,arvoreg,n);
     
 }  
-arvore desenharvore(node* raiz, node* no){
+node * desenharvore(node* raiz, node* no){
     char resposta;
     resposta='s';   
     int n;
@@ -247,7 +250,7 @@ arvore desenharvore(node* raiz, node* no){
     arvore1.pai=(node**)malloc(sizeof(node*));
     arvore1.pai[0]=raiz;
     arvore1.cont=i;      
-    return arvore1;  
+    return no; //arvore1;  
 } 
  
 int main(){
@@ -257,8 +260,8 @@ int main(){
    raiz->right=NULL; 
    arvore arvore1;        
    int n;   
-   arvore1=desenharvore(raiz,no);
-   
+   //arvore1=desenharvore(raiz,no);
+   no = desenharvore(raiz,no);
    n=arvore1.cont; 
    printf("%d",countdireita(arvore1.pai[0], n)->cont);  
    printf("digite um valor para ser buscado");
