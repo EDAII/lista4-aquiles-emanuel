@@ -314,6 +314,13 @@ node *desenharvore(node *no)
 
     return no; //arvore1;
 }
+void libera(node *no){
+  if (no == NULL)
+    return;
+  free(no);
+  libera(no->left);
+  libera(no->right);
+}
 
 int main()
 {
@@ -325,6 +332,8 @@ int main()
     //printf("%d",countdireita(arvore1.pai[0], n)->cont);
     printf("digite um valor para ser buscado \n");
     scanf("%d", &n);
-    busca2(no, n);
+    //busca(no,n); //busca iterativa
+    busca2(no, n); //busca recursiva por travessia
+    libera(no);
     return 0;
 }
